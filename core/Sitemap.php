@@ -1,5 +1,7 @@
 <?php
-// @aditya ayatusy
+
+// Author:aditya ayatusy
+
 class Sitemap {
 
     public $url;
