@@ -8,9 +8,15 @@ class Sitemap {
     public $key;
     public $external_url = false;
     public $img_url = false;
+    public $directory;
     
-    public function __construct($url){
+    public function __construct($url,$dir = null){
         $this->url = $url;
+        if(!$dir){
+            $this->directory = $_SERVER['DOCUMENT_ROOT'];
+        }else{
+            $this->directory = $dir;
+        }
     }
 
     public function create(){
@@ -84,7 +90,7 @@ class Sitemap {
     }
 
     public function createFile($data,$prio){
-        $myfile = fopen($dir."/sitemap.xml", "w") or die("Unable to open file!");
+        $myfile = fopen($this->directory."/sitemap.xml", "w") or die("Unable to open file!");
         $text = '<?xml version="1.0" encoding="UTF-8"?>
     <urlset
             xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
